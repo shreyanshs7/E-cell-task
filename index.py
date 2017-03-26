@@ -21,6 +21,10 @@ cursor = db.cursor()
 def index():
 	return render_template('index.html')
 
+@app.route('/push-panel')	
+def panel():
+	return render_template('pushpanel.html')
+
 @app.route('/register',methods=['GET','POST'])
 def register():
 	if request.method=='POST':
@@ -70,6 +74,7 @@ def confirm():
 		cursor.execute("""update register set activate= %s where email=%s""",['1',email])
 		db.commit()
 		return("user confirmed")
+
 
 if __name__ == '__main__':
 		app.run(debug=True)	
