@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/static/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/materialize.min.js"></script>
+	
+	<h2 class="center">REGISTRATION FORM</h2>
+	<div class="container">
+		<form method="POST" action="/register">
+			<label for="startupname">Start-up Name</label>
+			<input type="text" name="startupname" ><br>
+			
+			<label for="name">Your Name</label>
+			<input type="text" name="name" ><br>
+			
+			<label for="phoneno">Phone number</label>
+			<input type="text" name="phoneno" ><br>
+
+			<label for="email">E-mail</label>
+			<input type="text" name="email" ><br>
+			
+			<label for="password">Password</label>
+			<input type="password" name="password" ><br>
+			
+			
+			<input type="submit" value="Register" class="waves-effect waves-light btn">
+
+
+		</form>	
+	</div>
+</body>
+</html>
