@@ -23,8 +23,19 @@ def index():
 
 @app.route('/push-panel')	
 def panel():
-	return render_template('pushpanel.html')
+	return render_template('adminlogin.html')
 
+@app.route('/admin-login',methods=['GET','POST'])
+def admin():
+	if request.method=='POST':
+		adminuser = request.form['adminuser']
+		adminpass = request.form['adminpass']
+
+		if adminuser=='admin' and adminpass=='admin':
+			return render_template('pushpanel.html')	
+		else:
+			return("Wrong Credentials") 	
+			
 @app.route('/register',methods=['GET','POST'])
 def register():
 	if request.method=='POST':

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin Login</title>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="/static/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/static/materialize.min.js"></script>
+
+    <div class="container">
+    	<div class="card z-depth-5">
+    		<div class="card-content">
+    			<span class="card-title">Admin Login</span>
+    			<br><br>
+    			<form action="/admin-login" method="POST">
+    				<label for="username">Admin Username</label>
+					<input type="text" name="adminuser" ><br>
+
+    				<label for="password">Password</label>
+					<input type="password" name="adminpass" ><br>
+
+					<input type="submit" value="Login" class="waves-effect waves-light btn">
+    			</form>
+    		</div>
+    		
+    	</div>
+    	
+    </div>
+
+</body>
+</html>
