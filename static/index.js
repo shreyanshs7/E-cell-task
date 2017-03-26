@@ -15,8 +15,10 @@
     // start Web Push Manager to obtain device id and register it with Realtime
     // a service worker will be launched in background to receive the incoming push notifications
     var webPushManager = new WebPushManager();
+    alert("yo");
 
     webPushManager.start(function(error, registrationId){
+          
       if (error) {
         
         if(error.message) {
@@ -29,11 +31,10 @@
         $("#sendButton").text("No can do ... this browser doesn't support web push notifications");
         $("#sendButton").css("background-color","red");
       };
-     
-      // Create Realtime Messaging client
+       // start Web Push Manager to obtain device id and register it with Realtime
+      // a service worker will be launched in background to receive the incoming push notifications
       client = RealtimeMessaging.createClient();
       client.setClusterUrl('https://ortc-developers.realtime.co/server/ssl/2.1/');
-    
       client.onConnected = function (theClient) {
         // client is connected
 
@@ -57,6 +58,9 @@
     
       // Establish the connection
       client.connect(RealtimeAppKey, 'JustAnyRandomToken');  
+    
+      // Create Realtime Messaging client
+      
     });    
 });
 
@@ -76,9 +80,15 @@ function generateUserChannel(){
   }
   return userChannel;
 }
-
+// console.log($('#sendButton'));
 // send a message to the user private channel to trigger a push notification
 function send(){
+  // var RealtimeAppKey = "DNAAWw";
+
+  //   // update the UI  
+  //   $('#curl').text('curl "http://ortc-developers-useast1-s0001.realtime.co/send" --data "AK=' + RealtimeAppKey + '&AT=SomeToken&C=' + channel + '&M=12345678_1-1_This is a web push notification sent using the Realtime REST API"');
+  //   $('#channel').text(channel);
+      
   if (client) {
     client.send(channel, "This is a web push notification sent using the Realtime JavaScript SDK");
   };

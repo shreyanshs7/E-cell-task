@@ -14,7 +14,7 @@
 	
 	<h2 class="center">REGISTRATION FORM</h2>
 	<div class="container">
-		<form method="POST" action="/register">
+		<form method="POST" action="/register" enctype="multipart/form-data">
 			<label for="startupname">Start-up Name</label>
 			<input type="text" name="startupname" ><br>
 			
@@ -22,7 +22,10 @@
 			<input type="text" name="name" ><br>
 			
 			<label for="phoneno">Phone number</label>
-			<input type="text" name="phoneno" ><br>
+			<input type="text" name="phoneno" ><br><br>
+
+			<label for="file">Upload Start-up Icon</label>
+			<input type = "file" name = "file"><br><br><br>
 
 			<label for="email">E-mail</label>
 			<input type="text" name="email" ><br>
@@ -30,6 +33,7 @@
 			<label for="password">Password</label>
 			<input type="password" name="password" ><br>
 			
+
 			
 			<input type="submit" value="Register" class="waves-effect waves-light btn">
 

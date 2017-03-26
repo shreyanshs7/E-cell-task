@@ -1,10 +1,13 @@
 from flask import Flask,render_template,request
 from flask_mail import Mail, Message
 import MySQLdb
+from werkzeug import secure_filename
 import hashlib
+import os
 
 app = Flask(__name__)
 
+app.config['UPLOAD_FOLDER'] = 'start-up-icon/'
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'shreyanshss7@gmail.com'
@@ -24,6 +27,7 @@ def index():
 @app.route('/push-panel')	
 def panel():
 	return render_template('adminlogin.html')
+	
 
 @app.route('/admin-login',methods=['GET','POST'])
 def admin():
@@ -34,8 +38,10 @@ def admin():
 		if adminuser=='admin' and adminpass=='admin':
 			return render_template('pushpanel.html')	
 		else:
-			return("Wrong Credentials") 	
-			
+			return("Wrong Credentials")
+	return("Not allowed") 	
+
+
 @app.route('/register',methods=['GET','POST'])
 def register():
 	if request.method=='POST':
@@ -44,7 +50,13 @@ def register():
 		email = request.form['email']
 		password = request.form['password']
 		phoneno = request.form['phoneno']
-		
+		f=request.files['file']
+		nameoffile=(f.filename)
+		ext=nameoffile.split('.')
+		ext=ext[len(ext)-1]
+		f.filename=email+"."+ext
+		f.save(os.path.join(app.config['UPLOAD_FOLDER'],secure_filename(f.filename)))
+
 		password=(hashlib.md5(password.encode('utf-8')).hexdigest())
 
 		cursor.execute("""INSERT INTO register(startupname,yourname,email,password,phoneno) VALUES (%s,%s,%s,%s,%s)""",[startupname,yourname,email,password,phoneno])
