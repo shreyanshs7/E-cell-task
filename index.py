@@ -59,6 +59,9 @@ def register():
 
 		password=(hashlib.md5(password.encode('utf-8')).hexdigest())
 
+		if(not startupname or not yourname or not email or not password or not phoneno ):
+			return("Enter all the details")
+
 		cursor.execute("""INSERT INTO register(startupname,yourname,email,password,phoneno) VALUES (%s,%s,%s,%s,%s)""",[startupname,yourname,email,password,phoneno])
         que = "select activate from register where email=%s"
         cursor.execute(que,[email])
